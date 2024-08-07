@@ -19,7 +19,7 @@ class DepartmentFactory extends Factory
         return [
             'name' => $this->faker->sentence,
             'status' => $this->faker->boolean,
-            'created_at' => now(),
+            
         ];
     }
 }

@@ -137,6 +137,9 @@ class MenusTableSeeder extends Seeder
         $this->insertLink('admin', 'Edit menu elements',      '/menu/element');
         $this->insertLink('admin', 'Edit roles',              '/roles');
         $this->endDropdown();
+        $this->beginDropdown('admin', 'Department Management', 'cil-calculator');
+        $this->insertLink('admin', 'Department Master', '/departments');
+        $this->endDropdown();
 
         $this->joinAllByTransaction(); ///   <===== Must by use on end of this seeder
     }
