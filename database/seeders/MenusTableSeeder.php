@@ -130,7 +130,7 @@ class MenusTableSeeder extends Seeder
         $this->beginDropdown('admin', 'Complain Management', 'cil-calculator');
         $this->insertLink('admin', 'Subject', '/subjects');
         $this->insertLink('admin', 'Topic', '/topics');
-        $this->insertLink('admin', 'Complaint', '/users');
+        $this->insertLink('admin', 'Complaint', '/complaints');
         $this->endDropdown();
         $this->beginDropdown('admin', 'System Administration', 'cil-calculator');
         $this->insertLink('admin', 'Edit menu',               '/menu/menu');

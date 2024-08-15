@@ -11,7 +11,7 @@ class UpdateComplaintRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class UpdateComplaintRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'complain_type' => 'required|in:type1,type2,type3',
+            'department_id' => 'required|exists:departments,id',
+            'subdepartment_id' => 'required|exists:subdepartments,id',
+            'complaint_short_description' => 'required|min:3|max:255',
+            'complaint_description' => 'required|min:3|max:400',
+            'status' => 'required|boolean',
+            'complaint_reg_date' => 'required|date',
         ];
     }
 }

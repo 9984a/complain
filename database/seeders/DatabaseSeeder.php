@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             BlockSeeder::class,
             DepartmentSeeder::class,
             SubDepartmentSeeder::class,
+            ComplaintSeeder::class,
         ]);
     }
 }
