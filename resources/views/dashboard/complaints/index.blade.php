@@ -18,7 +18,7 @@
                         </div>
                         <div class="card-body">
                             <form method="GET" action="{{ url()->current() }}">
-                                
+
                                 <div class="form-group row">
                                     <label for="user" class="col-md-3 col-form-label">Creator</label>
                                     <div class="col-md-9">
@@ -37,10 +37,10 @@
                                     <div class="col-md-9">
                                         <select name="status" id="status" class="form-control">
                                             <option value="">All</option>
-                                            <option value=1
-                                                {{ ($filters['status'] ?? '') == 1 ? 'selected' : '' }}>Active</option>
-                                            <option value=0
-                                                {{ ($filters['status'] ?? '') == 0 ? 'selected' : '' }}>Inactive</option>
+                                            <option value=1 {{ ($filters['status'] ?? '') == 1 ? 'selected' : '' }}>Active
+                                            </option>
+                                            <option value=0 {{ ($filters['status'] ?? '') == 0 ? 'selected' : '' }}>Inactive
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -73,7 +73,6 @@
                                         <th>Short Description</th>
                                         <th>Description</th>
                                         <th>Created By</th>
-                                        <th>Download</th>
                                         <th>View</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
@@ -88,13 +87,7 @@
                                             </td>
                                             <td class="short_description">{!! $complaint->short_description !!}</td>
                                             <td class="description">{!! $complaint->description !!}</td>
-                                            <td>{{ $complaint->creator->name }}</td>
-                                            <td>
-                                                <a href="{{ route('complaints.downloadPDF', ['id' => $complaint->id]) }}"
-                                                    class="btn btn-info">Download PDF</a>
-                                                <a href="{{ route('complaints.downloadHTML', ['id' => $complaint->id]) }}"
-                                                    class="btn btn-info">Download HTML</a>
-                                            </td>
+                                            <td class="description">{{ $complaint->creator->name }}</td>
                                             <td>
                                                 <a href="{{ url('/complaints/' . $complaint->id) . '?' . http_build_query(request()->query()) }}"
                                                     class="btn btn-primary">View</a>
@@ -104,7 +97,8 @@
                                                     class="btn btn-primary">Edit</a>
                                             </td>
                                             <td>
-                                                <form action="{{ route('complaints.destroy', ['complaint' => $complaint->id]) }}"
+                                                <form
+                                                    action="{{ route('complaints.destroy', ['complaint' => $complaint->id]) }}"
                                                     method="POST">
                                                     @method('DELETE')
                                                     @csrf

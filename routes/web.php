@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\SubjectController;
 
@@ -26,6 +27,7 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::resource('topics', 'TopicController');
             Route::resource('subDepartments', 'SubDepartmentController');
             Route::resource('departments', 'DepartmentController');
+            Route::resource('complaints', 'ComplaintController');
             Route::get('/subjects/{id}/download-pdf', [SubjectController::class, 'downloadPDF'])->name('subjects.downloadPDF');
             Route::get('/subjects/{id}/download-html', [SubjectController::class, 'downloadHTML'])->name('subjects.downloadHTML');
 

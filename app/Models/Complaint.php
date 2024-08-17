@@ -12,10 +12,8 @@ class Complaint extends Model
 
     protected $guarded = [];
 
-
     public function creator()
     {
-
         return $this->belongsTo(User::class);
     }
 
@@ -27,6 +25,7 @@ class Complaint extends Model
     {
         return $this->belongsTo(District::class);
     }
+
     public function state()
     {
         return $this->belongsTo(State::class);
@@ -35,8 +34,8 @@ class Complaint extends Model
     {
         return $this->belongsTo(Department::class);
     }
-    // public function subdepartment()
-    // {
-    //     return $this->belongsTo(subdepartment::class);
-    // }
+    public function subdepartment()
+    {
+        return $this->belongsTo(SubDepartment::class);
+    }
 }

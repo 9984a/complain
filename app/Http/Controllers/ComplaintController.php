@@ -9,6 +9,7 @@ use App\Models\Complaint;
 use App\Models\Department;
 use App\Models\District;
 use App\Models\State;
+use App\Models\SubDepartment;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,15 +24,15 @@ class ComplaintController extends Controller
         $perPage = $request->input('per_page', 10);
 
         $complaints = Complaint::filter($request->all())
-            ->with('creator', 'block', 'district', 'state', 'department', 'subdepartment')
+            ->with('creator', 'department', 'subdepartment')
             ->orderBy('id', 'desc')
             ->paginate($perPage)
             ->appends($request->query());
 
         $creators = User::all();
-        $blocks = Block::where('status', 1)->get();
-        $districts = District::where('status', 1)->get();
-        $states = State::where('status', 1)->get();
+        $blocks = Block::all();
+        $districts = District::all();
+        $states = State::all();
         $departments = Department::where('status', 1)->get();
         $subdepartments = SubDepartment::where('status', 1)->get();
 
@@ -53,9 +54,9 @@ class ComplaintController extends Controller
      */
     public function create(Request $request)
     {
-        $blocks = Block::where('status', 1)->get();
-        $districts = District::where('status', 1)->get();
-        $states = State::where('status', 1)->get();
+        $blocks = Block::all();
+        $districts = District::all();
+        $states = State::all();
         $departments = Department::where('status', 1)->get();
         $subdepartments = SubDepartment::where('status', 1)->get();
 
@@ -86,9 +87,9 @@ class ComplaintController extends Controller
      */
     public function show(Complaint $complaint, Request $request)
     {
-        $blocks = Block::where('status', 1)->get();
-        $districts = District::where('status', 1)->get();
-        $states = State::where('status', 1)->get();
+        $blocks = Block::all();
+        $districts = District::all();
+        $states = State::all();
         $departments = Department::where('status', 1)->get();
         $subdepartments = SubDepartment::where('status', 1)->get();
 
@@ -107,9 +108,9 @@ class ComplaintController extends Controller
      */
     public function edit(Complaint $complaint, Request $request)
     {
-        $blocks = Block::where('status', 1)->get();
-        $districts = District::where('status', 1)->get();
-        $states = State::where('status', 1)->get();
+        $blocks = Block::all();
+        $districts = District::all();
+        $states = State::all();
         $departments = Department::where('status', 1)->get();
         $subdepartments = SubDepartment::where('status', 1)->get();
 
@@ -137,9 +138,9 @@ class ComplaintController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Complaint $complaint,Request $request)
+    public function destroy(Complaint $complaint, Request $request)
     {
-        $filters= $request->input('_token','_method');
+        $filters = $request->input('_token', '_method');
 
         $complaint->delete();
 
